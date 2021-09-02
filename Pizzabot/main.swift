@@ -2,10 +2,18 @@
 //  main.swift
 //  Pizzabot
 //
-//  Created by Yulia Kovalevich on 5.08.21.
 //
 
 import Foundation
 
-print("Hello, World!")
+let pizzabot = Pizzabot()
+let consoleIO = ConsoleIO()
 
+if CommandLine.argc < 2 {
+    consoleIO.writeMessage("You had to enter the string.", to: .error)
+} else {
+    let inputString = consoleIO.getInputString()
+    if let instructions = pizzabot.pizzabot(inputString) {
+        print(instructions)
+    }
+}
